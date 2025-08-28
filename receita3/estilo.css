@@ -1,0 +1,32 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding-top: 50px;
+}
+
+#controle button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #333;
+    background-color: white;
+}
+
+#resultado {
+    margin-top: 20px;
+    padding: 20px;
+    
+    opacity: 0; 
+    
+    transition: opacity 0.5s ease-in-out; 
+}
+
+#resultado.visivel {
+    opacity: 1; 
+}
+
+#resultado h1 {
+    color: #333;
+    margin: 0;
+}

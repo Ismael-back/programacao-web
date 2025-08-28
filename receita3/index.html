@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Efeito de Fade com JS</title>
+    <link href="estilo.css" rel="stylesheet">
+</head>
+<body>
+
+    <div id="controle">
+        <button id="botaoCarregar">Exibir / Ocultar Cerveja</button>
+    </div>
+
+    <div id="resultado"></div>
+
+    <script>
+        const botao = document.getElementById("botaoCarregar");
+        const divResultado = document.getElementById("resultado");
+
+        function toggleCerveja() {
+            const estaVisivel = divResultado.classList.contains('visivel');
+
+            if (estaVisivel) {
+                divResultado.classList.remove('visivel');
+
+                divResultado.addEventListener('transitionend', function handleTransitionEnd() {
+                    divResultado.innerHTML = '';
+                    divResultado.removeEventListener('transitionend', handleTransitionEnd);
+                }, { once: true }); 
+
+            } else {
+                divResultado.innerHTML = `<h1>Skol</h1>`;
+
+                divResultado.classList.add('visivel');
+            }
+        }
+
+        botao.addEventListener("click", toggleCerveja);
+    </script>
+</body>
+</html>
