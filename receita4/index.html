@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Manipulação de Cervejas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #838a70;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #controles {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px; 
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: 1px solid #0056b3;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #meu-amor table {
+            width: 300px;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        #meu-amor th, #meu-amor td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        #meu-amor th {
+            background-color: #333;
+            color: white;
+        }
+
+        #meu-amor tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #meu-amor td {
+            background-color: #ffffff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lista de Cervejas</h1>
+    
+    <div id="controles">
+        <button id="botaoCarregar">Mostrar Lista Original</button>
+        <button id="botaoOrdenar">Ordenar Cervejas</button>
+        <button id="botaoEmbaralhar">Embaralhar Cervejas</button>
+    </div>
+
+    <div id="meu-amor"></div>
+
+    <script>
+        const cervejas = ["Guinness", "Desperados", "Becks", "Heineken", "Skol", "Brahma"];
+
+        const divContainer = document.getElementById("meu-amor");
+        const botaoCarregar = document.getElementById("botaoCarregar");
+        const botaoOrdenar = document.getElementById("botaoOrdenar");
+        const botaoEmbaralhar = document.getElementById("botaoEmbaralhar");
+
+        function renderizarTabela(arrayDeCervejas) {
+            let linhasHtml = arrayDeCervejas.map(item => `<tr><td>${item}</td></tr>`).join("\n");
+            
+            const tabelaHtml = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome da Cerveja</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${linhasHtml}
+                    </tbody>
+                </table>
+            `;
+            divContainer.innerHTML = tabelaHtml;
+        }
+
+        function mostrarCervejas() {
+            renderizarTabela(cervejas);
+        }
+
+        function ordenarCervejas() {
+            const cervejasOrdenadas = [...cervejas].sort();
+            renderizarTabela(cervejasOrdenadas);
+        }
+        
+        function embaralharCervejas() {
+            const cervejasEmbaralhadas = [...cervejas].sort(() => Math.random() - 0.5);
+            renderizarTabela(cervejasEmbaralhadas);
+        }
+        
+        botaoCarregar.addEventListener("click", mostrarCervejas);
+        botaoOrdenar.addEventListener("click", ordenarCervejas);
+        botaoEmbaralhar.addEventListener("click", embaralharCervejas);
+        
+        mostrarCervejas();
+    </script>
+</body>
+</html>
