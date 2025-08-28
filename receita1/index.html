@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ismael Poema</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin-left:-5px;
+            margin-right:-5px;
+        }
+            
+        .column {
+            float: left;
+            width: 50%;
+            padding: 5px;
+        }
+
+            /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+   <body>
+
+      <img src="https://akamai.sscdn.co/uploadfile/letras/playlists/3/a/b/9/3ab92363f7974d679f4194de9f389b5b.jpg" width="200"/>
+
+      <h1>Uma trova...</h1>
+
+      <p>
+         Eu só preciso de hoje<br/>      
+         Pra viver e ser feliz<br/>
+         O passado já me foge<br/>
+         E o futuro nada diz!<br/>
+      </p>
+
+      <br/>
+
+      <table>
+        <tr>
+          <th>Refrigerante</th>
+          <th>Preço</th>
+        </tr>
+        <tr>
+          <td>Coca-Cola</td>
+          <td>$5</td>
+        </tr>
+        <tr>
+          <td>Pepsi</td>
+          <td>$4</td>
+        </tr>
+      </table>
+      
+      <div class="row">
+        <div class="column">
+          <table>
+            <tr>
+              <th>Nome</th>
+              <th>Sobrenome</th>
+              <th>Pontos</th>
+            </tr>
+            <tr>
+              <td>Ismael</td>
+              <td>Gomes</td>
+              <td>99</td>
+            </tr>
+            <tr>
+              <td>Kaique</td>
+              <td>Vieira</td>
+              <td>94</td>
+            </tr>
+            <tr>
+              <td>Luiz</td>
+              <td>Henrique</td>
+              <td>87</td>
+            </tr>
+          </table>
+        </div>
+        <div class="column">
+          <table>
+            <tr>
+              <th>Nome</th>
+              <th>Sobrenome</th>
+              <th>Pontos</th>
+            </tr>
+            <tr>
+              <td>Isaque</td>
+              <td>Guimaraes</td>
+              <td>79</td>
+            </tr>
+            <tr>
+              <td>Eduardo</td>
+              <td>Nascimentos</td>
+              <td>46</td>
+            </tr>
+            <tr>
+              <td>Diego</td>
+              <td>Axiel</td>
+              <td>77</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <p><a href="https://www.google.com/">Olha o Google</a></p>
+      <p><a href="https://www.google.com/" target="_blank">Olha o Google na proxima pagina</a></p>
+
+      <p>
+
+         Autor: Ismael Gomes
+
+      </p>
+
+   </body>     
+
+</html>
