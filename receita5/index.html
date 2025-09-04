@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Manipulação de Sorvetes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #838a70;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #controles {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px; 
+        }
+
+        a {
+            padding: 10px 15px;
+            font-size: 14px;
+            border: 1px solid #0056b3;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        #meu-amor table {
+            width: 300px;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+
+        #meu-amor th, #meu-amor td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        #meu-amor th {
+            background-color: #333;
+            color: white;
+        }
+
+        #meu-amor tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #meu-amor td {
+            background-color: #ffffff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lista de Sorvetes</h1>
+    
+    <div id="controles">
+        <a href="#" id="linkCarregar">Mostrar Lista Original</a>
+        <a href="#" id="linkOrdenar">Ordenar Sorvetes</a>
+        <a href="#" id="linkEmbaralhar">Embaralhar Sorvetes</a>
+    </div>
+
+    <div id="meu-amor"></div>
+
+    <script>
+        const sorvetes = ["Chocolate", "Morango", "Baunilha", "Pistache", "Flocos", "Doce de Leite"];
+        const divContainer = document.getElementById("meu-amor");
+
+        const renderizarTabela = (array) => {
+            const linhasHtml = array.map(item => `<tr><td>${item}</td></tr>`).join("\n");
+            const tabelaHtml = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Sorvete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${linhasHtml}
+                    </tbody>
+                </table>
+            `;
+            divContainer.innerHTML = tabelaHtml;
+        }
+
+        const mostrarSorvetes = () => renderizarTabela(sorvetes);
+        const ordenarSorvetes = () => renderizarTabela([...sorvetes].sort());
+        const embaralharSorvetes = () => renderizarTabela([...sorvetes].sort(() => Math.random() - 0.5));
+
+        const linkCarregar = document.getElementById("linkCarregar");
+        const linkOrdenar = document.getElementById("linkOrdenar");
+        const linkEmbaralhar = document.getElementById("linkEmbaralhar");
+
+        linkCarregar.addEventListener("click", (e) => { e.preventDefault(); mostrarSorvetes(); });
+        linkOrdenar.addEventListener("click", (e) => { e.preventDefault(); ordenarSorvetes(); });
+        linkEmbaralhar.addEventListener("click", (e) => { e.preventDefault(); embaralharSorvetes(); });
+
+        mostrarSorvetes();
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Cervejas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            padding: 10px 15px;
+            margin: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Cervejas</h1>
+
+    <div>
+        <a href="#" id="linkCarregar">Carregar Cervejas</a>
+    </div>
+
+    <div id="cervejasDiv"></div>
+
+    <script>
+        const cervejas = [
+            { name: "Guiness", alcohol: "10%", style: "Imperial Stout", ibu: "45" },
+            { name: "Desperados", alcohol: "6%", style: "Lager", ibu: "20" },
+            { name: "Becks", alcohol: "5%", style: "Pilsen", ibu: "18" }
+        ];
+
+        const carregarDiv = (arr, elementId="cervejasDiv", headers=["Nome","Álcool","Estilo","Amargor"], properties=["name","alcohol","style","ibu"]) => {
+            const div = document.getElementById(elementId);
+            if (!div) return;
+
+            const cabecalhoHtml = headers.map(h => `<th>${h}</th>`).join("");
+            const linhasHtml = arr.map(item => {
+                return `<tr>${properties.map(p => `<td>${item[p] || ""}</td>`).join("")}</tr>`;
+            }).join("\n");
+
+            const tabelaHtml = `
+                <table>
+                    <thead>
+                        <tr>${cabecalhoHtml}</tr>
+                    </thead>
+                    <tbody>
+                        ${linhasHtml}
+                    </tbody>
+                </table>
+            `;
+            div.innerHTML = tabelaHtml;
+        };
+
+        const linkCarregar = document.getElementById("linkCarregar");
+        linkCarregar.addEventListener("click", e => {
+            e.preventDefault();
+            carregarDiv(cervejas);
+        });
+
+    </script>
+
+</body>
+</html>
